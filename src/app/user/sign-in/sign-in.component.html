@@ -6,12 +6,14 @@
     <input
       name="email"
       required
+      email
       placeholder="Email Address"
       type="text"
       #email="ngModel"
       [(ngModel)]="credentials().email"
     />
-    <em class="error"*ngIf="email.invalid && email.touched">Email address is required.</em>
+    <em class="error"*ngIf="email.errors?.['required'] && email.touched">Email address is required.</em>
+    <em class="error"*ngIf="email.errors?.['email'] && email.touched">Must be a valid email format.</em>
     <input
       name="password"
       required
